@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AchsinUIUX</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#pesan {
+   position:fixed;
+
+    width: 100%;
+    height:auto;
+    background: #00880D;
+    overflow-y: auto;
+    z-index:2;
+border-radius:0 0 0px 0px;
+}
+
+#map {
+    float: right;
+    width: 100%;
+    height: 67vh;
+    z-index:1;
+    top:33vh;
+}
+
+#title {
+    text-align: center;
+    margin: 8px 0;
+
+    margin-top:-17px;
+}
+
+.inner {
+    padding: 20px;
+
+}
+
+#detail {
+    position: fixed;
+    display: none;
+    top: 66%;
+    left:3.7%;
+    width: 93%;
+    height: 250px;
+    background: #00880D;
+    overflow-y: auto;
+    z-index: 2;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#detail th, #detail td {
+    padding: 5px;
+    font-size:14px;
+}
+.card-custom {
+    background-color: #fff;
+    padding: 10px 10px;
+    box-shadow: 3px 3px 10px rgb(0 0 0 / 30%);
+}
+button.tab-opsi {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #00880D;
+    cursor: pointer;
+} 
+button.tab-opsi.active {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+font-weight:bold;
+}          
+#kirim-wa {
+    position: relative;
+    display: block;
+    background: #00880D;
+    color: #fff;
+    padding: 3px 10px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    cursor: pointer;
+}
+#kirim-wa:focus,#kirim-wa:hover {
+    border: 0;
+    outline: 0;
+}          
+#pesan-btn {
+    display: block;
+    margin: auto;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+    <div id="pesan">
+        <div class="inner">
+          <div class="button-tab">
+            <button class="tab-opsi active" data="1000">Ride🛵</button>
+            <button class="tab-opsi" data="1200">Car🚕</button>
+            <button class="tab-opsi" data="1500">Delivery📦</button>
+          </div>
+            <form>
+              <div class="form-group">
+                <label style="color:#fff">Masukkan Lokasi Anda</label>
+                <input style=" font-size:11px; margin-top:-9px" type="text" class="form-control" id="start" placeholder="📍Jl. Mayjend Ahmad Yani" required>
+              </div>
+             <div class="form-group">
+               <label style="color:#fff">Masukkan Lokasi Tujuan</label>
+               <input style="font-size:11px; margin-top:-7px" type="text" class="form-control" id="end" placeholder="📍Jl. pasuruan" required>
+              </div>
+              <input style="position:fixed;bottom: 160px;left: 50%;transform: translate(-50%,-45%);z-index: 2;color:#ffffff;background:#00880D;" type="submit" class="btn btn-light" id="pesan-btn" value="PESAN SEKARANG">
+          </form>
+        </div>
+    </div>
+          
+            
+        <div id="detail">
+                <div class="card-custom">
+                    <table>
+                        <tr>
+                            <th style="color:grey">Opsi</th>
+                            <th>:</th>
+                            <td id="option"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Jarak</th>
+                            <th>:</th>
+                            <td id="distance"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Durasi</th>
+                            <th>:</th>
+                            <td id="duration"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Harga</th>
+                            <th>:</th>
+                            <td id="price"></td>
+                        </tr>
+                    </table>
+                  <form>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan Nama Anda</label>
+                      <input style=" font-size:11px; margin-top:-9px" type="text" class="form-control" id="nama" placeholder="Nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan No Whatsapp Anda</label>
+                      <input style="font-size:11px; margin-top:-7px" type="number" class="form-control" id="nomor" placeholder="+628xxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan Catatan atau Pesanan</label>
+                      <input style="font-size:11px; margin-top:-7px" type="text" class="form-control" id="catatan" placeholder="Ketik sesuatu" required>
+                     </div>
+<br>
+                    <input style="left: 15%;transform: translate(-50%,-45%);z-index: 2;color:#ffffff;background:#00880D;" type="submit" class="btn btn-light" id="kirim-wa" value="LANJUT PESAN">
+<br>
+                  </form>
+                </div>
+            </div>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnOJ0Qe2LO5KX76Lj3E_mC_ei8pPwGSQQ&libraries=places"></script>
+     <script src="https://fontawesomee.github.io/Nobiorderwhatsapp.js"></script>
+</body>
+</html>
