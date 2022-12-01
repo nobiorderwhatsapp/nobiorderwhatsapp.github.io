@@ -1,1 +1,336 @@
-tes
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AchsinUIUX</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#pesan {
+   position:fixed;
+
+    width: 100%;
+    height:auto;
+    background: #00880D;
+    overflow-y: auto;
+    z-index:2;
+border-radius:0 0 0px 0px;
+}
+
+#map {
+    float: right;
+    width: 100%;
+    height: 67vh;
+    z-index:1;
+    top:33vh;
+}
+
+#title {
+    text-align: center;
+    margin: 8px 0;
+
+    margin-top:-17px;
+}
+
+.inner {
+    padding: 20px;
+
+}
+
+#detail {
+    position: fixed;
+    display: none;
+    top: 66%;
+    left:3.7%;
+    width: 93%;
+    height: 250px;
+    background: #00880D;
+    overflow-y: auto;
+    z-index: 2;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#detail th, #detail td {
+    padding: 5px;
+    font-size:14px;
+}
+.card-custom {
+    background-color: #fff;
+    padding: 10px 10px;
+    box-shadow: 3px 3px 10px rgb(0 0 0 / 30%);
+}
+button.tab-opsi {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #00880D;
+    cursor: pointer;
+} 
+button.tab-opsi.active {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+font-weight:bold;
+}          
+#kirim-wa {
+    position: relative;
+    display: block;
+    background: #00880D;
+    color: #fff;
+    padding: 3px 10px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    cursor: pointer;
+}
+#kirim-wa:focus,#kirim-wa:hover {
+    border: 0;
+    outline: 0;
+}          
+#pesan-btn {
+    display: block;
+    margin: auto;
+    color:#fff;
+}
+</style>
+</head>
+
+<body>
+    <div id="pesan">
+        <div class="inner">
+          <div class="button-tab">
+            <button class="tab-opsi active" data="1000">Ride🛵</button>
+            <button class="tab-opsi" data="1200">Car🚕</button>
+            <button class="tab-opsi" data="1500">Delivery📦</button>
+          </div>
+            <form>
+              <div class="form-group">
+                <label style="color:#fff">Masukkan Lokasi Anda</label>
+                <input style=" font-size:11px; margin-top:-9px" type="text" class="form-control" id="start" placeholder="📍Jl. Mayjend Ahmad Yani" required>
+              </div>
+             <div class="form-group">
+               <label style="color:#fff">Masukkan Lokasi Tujuan</label>
+               <input style="font-size:11px; margin-top:-7px" type="text" class="form-control" id="end" placeholder="📍Jl. pasuruan" required>
+              </div>
+              <input style="position:fixed;bottom: 160px;left: 50%;transform: translate(-50%,-45%);z-index: 2;color:#ffffff;background:#00880D;" type="submit" class="btn btn-light" id="pesan-btn" value="PESAN SEKARANG">
+          </form>
+        </div>
+    </div>
+          
+            
+        <div id="detail">
+                <div class="card-custom">
+                    <table>
+                        <tr>
+                            <th style="color:grey">Opsi</th>
+                            <th>:</th>
+                            <td id="option"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Jarak</th>
+                            <th>:</th>
+                            <td id="distance"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Durasi</th>
+                            <th>:</th>
+                            <td id="duration"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:grey">Harga</th>
+                            <th>:</th>
+                            <td id="price"></td>
+                        </tr>
+                    </table>
+                  <form>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan Nama Anda</label>
+                      <input style=" font-size:11px; margin-top:-9px" type="text" class="form-control" id="nama" placeholder="Nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan No Whatsapp Anda</label>
+                      <input style="font-size:11px; margin-top:-7px" type="number" class="form-control" id="nomor" placeholder="+628xxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                      <label style="font-size:13px;color:grey; font-weight:450">Masukkan Catatan atau Pesanan</label>
+                      <input style="font-size:11px; margin-top:-7px" type="text" class="form-control" id="catatan" placeholder="Ketik sesuatu" required>
+                     </div>
+<br>
+                    <input style="left: 15%;transform: translate(-50%,-45%);z-index: 2;color:#ffffff;background:#00880D;" type="submit" class="btn btn-light" id="kirim-wa" value="LANJUT PESAN">
+<br>
+                  </form>
+                </div>
+            </div>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnOJ0Qe2LO5KX76Lj3E_mC_ei8pPwGSQQ&libraries=places"></script>
+<script>
+ var url_string = window.location.href;
+    var urlParameter = new URL(url_string);
+var urlParameter = new URL(url_string);
+console.log(urlParameter)
+    var urlLicense = urlParameter.hostname;
+    console.log(urlLicense);
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbzCWcRxgN5BrH3JA1WtUVYN1Npjnib_sLHOleh8QZRK2OQI1j228ReeH3qflZhmI2S4/exec",
+      type: "GET",
+      data: "users",
+      crossDomain: true,
+      dataType: "",
+      success: function (data) {
+        var json = data.user;
+        console.log(json);
+        var cekLisensi = "";
+        for (var i = 0; i < json.length; i++) {
+          if (json[i].domain == urlLicense){
+            cekLisensi += json[i].domain;
+          }
+        }
+        console.log(cekLisensi);
+        if (cekLisensi != urlLicense) {
+          var peringatanLisensi = "<style>#peringatan span{font-size:50px}#peringatan{position: fixed!important;z-index: 999999!important;top: 0!important;left: 0!important;width: 100%!important;height: 100%!important;display: flex!important;background: rgba(0,0,0,.4)!important;}#peringatan-wrap{display: block!important;margin: auto!important;width: 600px!important;max-width: 90%!important;text-align: center!important;background: #fff!important;padding: 40px!important;border-radius: 8px!important;}#peringatan h4{font-size:20px}</style><div id='peringatan'><div id='peringatan-wrap'><h4>Hayooo Mau Copas yahh!</h4><p>Lisensi template untuk website "+urlLicense+" belum aktif</p><p>Silahkan aktivasi lisensi di <b>Achsin UI/UX 083125227588</b></p></div><div id='hasil'></div></div>";
+          $(document.body).html(peringatanLisensi)
+        }
+      }
+    });
+var map;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
+// var harga = 1;
+
+map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+        lat: -7.897089978811297,
+        lng: 112.8238867968321
+    },
+    zoom: 15
+});
+directionsDisplay.setMap(map);
+
+var start = document.getElementById('start');
+var searchStart = new google.maps.places.SearchBox(start);
+var end = document.getElementById('end');
+var searchEnd = new google.maps.places.SearchBox(end);
+
+var detail = document.getElementById('detail');
+
+var pesanStart = document.getElementById('pesan-btn');
+
+function findRoute(harga) {
+    var startAddress = start.value;
+    var endAddress = end.value;
+    var request = {
+        origin: startAddress,
+        destination: endAddress,
+        travelMode: 'DRIVING'
+    };
+    function round(value, precision) {
+      var multiplier = Math.pow(10, precision || 0);
+      return Math.round(value * multiplier) / multiplier;
+    }
+    directionsService.route(request, function (result, status) {
+        if (status == 'OK') {
+            directionsDisplay.setDirections(result);
+            // console.log(result);
+            // console.log(result.routes[0].legs[0].distance.text);
+            var resetKM = result.routes[0].legs[0].distance.value/1000;
+            var km = round(resetKM, 0);
+            var opsi = document.querySelector('.tab-opsi.active').innerHTML;
+            document.getElementById('option').innerHTML = opsi;
+            document.getElementById('distance').innerHTML = km + " km";
+            document.getElementById('duration').innerHTML = result.routes[0].legs[0].duration.text;
+            document.getElementById('price').innerHTML = angkaToRp(km * parseInt(harga));
+      console.log(km);
+      console.log(parseInt(harga));
+            detail.style.display = 'block';
+            document.getElementById('pesan-btn').style.display = 'none';
+        } else {
+            detail.style.display = 'none';
+            alert('Petunjuk arah gagal dimuat, masukkan alamat yang benar!');
+        }
+    });
+}
+
+pesan.addEventListener("click", function (event) {
+    if (start.value.trim() != "" && end.value.trim() != "") {
+        event.preventDefault();
+        var harga = document.querySelector(".tab-opsi.active").getAttribute("data");
+        findRoute(harga);
+    }
+});
+var nama = document.getElementById('nama');
+var nomor = document.getElementById('nomor');      
+var kirim = document.getElementById('kirim-wa');      
+kirim.addEventListener("click", function (event) {
+    if (nama.value != "" && nomor.value != "") {
+        event.preventDefault();
+        var asal = document.getElementById('start').value;
+        var tujuan = document.getElementById('end').value;
+        var catatan = document.getElementById('catatan').value;
+        var jarak = document.getElementById('distance').innerHTML;
+        var waktu = document.getElementById('duration').innerHTML;
+        var harga = document.getElementById('price').innerHTML;
+        var opsi = document.getElementById('option').innerHTML;
+        var wa = "";
+wa +='Halo saya ingin pesan secara Offline kak %0A' +
+    '=============================%0A%0A'
+
+wa +='📜 DATA PEMBELI %0A' +
+    '=============================%0A'
+            wa += "*Nama Lengkap :* " + nama.value + "%0A";
+            wa += "*No WhatsApp    :* " + nomor.value + "%0A%0A";
+
+wa +='📍 LOKASI ASAL DAN TUJUAN %0A' +
+    '=============================%0A'
+
+            wa += "*Lokasi Asal     :* " + asal + "%0A";
+            wa += "*Lokasi Tujuan :* " + tujuan + "%0A%0A";
+
+wa +='📌JARAK TEMPUH DAN HARGA %0A' +
+    '=============================%0A'
+            wa += "*Jenis Layanan  :* " + opsi + "%0A";
+            wa += "*Jarak                  :* " + jarak + "%0A";
+            wa += "*Waktu Tempuh :* " + waktu + "%0A";
+            wa += "*Harga                 :* " + harga;
+      if (catatan != ""){
+          wa += "%0A=============================%0A";
+          wa += "*Catatan :* " + catatan + "%0A";
+          wa += "=============================";
+      }
+       var walink =
+       "https://api.whatsapp.com/send";
+       var nomorHP = "6283125227588";
+       var whatsapp = walink + '?phone=' + nomorHP + '&text=' + wa;
+       window.open(whatsapp,'_blank');
+    }
+});
+var tabButton = document.querySelectorAll('.tab-opsi');
+for (var i = 0; i < tabButton.length; i++) {
+   tabButton[i].addEventListener( "click", function() {
+      document.querySelector('.tab-opsi.active').classList.remove('active');
+      this.classList.toggle("active");
+      detail.style.display = 'none'
+   });
+} 
+//Format Rupiah
+  function angkaToRp(angka) {
+    var rupiah = '';    
+    var angkarev = angka.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+              return 'Rp'+rupiah.split('',rupiah.length-1).reverse().join('');
+  };           
+          
+</script>
+</body>
+</html>
+
